@@ -23,11 +23,18 @@ jobs:
         run: |
           echo ::set-output name=version::${GITHUB_REF##*/}
 
+      - name: Use Variables
+        run: |
+          echo $VERSION
+        env:
+          VERSION: ${{ steps.version.outputs.VERSION }}
+
+
       - name: build
         run: |
-          docker build -t ghcr.io/tonodera/deploy-test:${{ steps.version.outputs.VERSION }} .
+          docker build -t ghcr.io/tonodera/deploy-test:${{ VERSION }} .
 
       - name: docker push
         run: |
-          docker push ghcr.io/tonodera/deploy-test:${{ steps.version.outputs.VERSION }}
+          docker push ghcr.io/tonodera/deploy-test:${{ VERSION }}
           
