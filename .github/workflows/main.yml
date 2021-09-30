@@ -16,4 +16,4 @@ jobs:
 
       - name: test
         run: |
-          echo 'succeeded...'
+          ls /
