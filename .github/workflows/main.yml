@@ -21,8 +21,7 @@ jobs:
       - name: Set version
         id: version
         run: |
-          VERSION=$(echo ${{ github.ref##*/ }}) 
-          echo ::set-output name=version::$VERSION
+          echo ::set-output name=version::${GITHUB_REF##/*}
 
       - name: build
         run: |
