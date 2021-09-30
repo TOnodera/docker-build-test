@@ -32,9 +32,9 @@ jobs:
 
       - name: build
         run: |
-          docker build -t ghcr.io/tonodera/deploy-test:${{ VERSION }} .
+          docker build -t ghcr.io/tonodera/deploy-test:${{ env.VERSION }} .
 
       - name: docker push
         run: |
-          docker push ghcr.io/tonodera/deploy-test:${{ VERSION }}
+          docker push ghcr.io/tonodera/deploy-test:${{ env.VERSION }}
           
