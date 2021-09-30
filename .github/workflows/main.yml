@@ -18,11 +18,11 @@ jobs:
         run: |
           docker build -t ghcr.io/tonodera/deploy-test:latest .
 
-      - name: login
+      - name: docker login
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u TOnodera --password-stdin
 
-      - name: push
+      - name: docker push
         run: |
           docker push ghcr.io/tonodera/deploy-test:latest
           
