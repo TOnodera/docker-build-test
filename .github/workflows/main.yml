@@ -35,7 +35,7 @@ jobs:
           
       - name: Build base image
         run: |
-          echo $SOURCE_NAME
+          echo $SOURCE_NAME 
           echo $SOURCE_BRANCH
           echo $SOURCE_TAG
         env:
