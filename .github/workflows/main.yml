@@ -16,7 +16,7 @@ jobs:
 
       - name: build
         run: |
-          docker build -t ghcr.io/TOnodera/deploy-test:latest .
+          docker build -t ghcr.io/tonodera/deploy-test:latest .
 
       - name: login
         run: |
