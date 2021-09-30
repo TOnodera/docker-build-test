@@ -24,5 +24,5 @@ jobs:
 
       - name: push
         run: |
-          docker push ghcr.io/TOnodera/deploy-test:latest
+          docker push ghcr.io/tonodera/deploy-test:latest
           
