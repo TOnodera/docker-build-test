@@ -14,23 +14,21 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: build
-        run: |
-          docker build -t ghcr.io/tonodera/deploy-test:latest .
-
       - name: docker login
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u TOnodera --password-stdin
 
-      - name: docker push
-        run: |
-          docker push ghcr.io/tonodera/deploy-test:latest
-
       - name: Set version
         id: version
         run: |
-          REPOSITORY=$(echo ${{ github.repository }} | sed -e "s#.*/##")
           VERSION=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
           echo ::set-output name=version::$VERSION
-          echo ::set-output name=filename::$REPOSITORY-$VERSION
+
+      - name: build
+        run: |
+          docker build -t ghcr.io/tonodera/deploy-test:latest .
+
+      - name: docker push
+        run: |
+          docker push ghcr.io/tonodera/deploy-test:${{VERSION}}
           
