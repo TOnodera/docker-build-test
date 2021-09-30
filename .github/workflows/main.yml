@@ -27,7 +27,7 @@ jobs:
         run: |
           echo $VERSION
         env:
-          VERSION: ${{ steps.version.outputs.VERSION }}
+          VERSION: ${{ steps.version.outputs.version }}
 
 
       - name: build
