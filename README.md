@@ -14,4 +14,4 @@ vpsサーバーからimageをpullして利用したいので、pushまで出来�
 
 □tagの取得  
 https://scrapbox.io/Sixeight/GItHub_Actions%E3%81%A7%E5%AE%9F%E8%A1%8C%E5%AF%BE%E8%B1%A1%E3%81%AE%E3%82%BF%E3%82%B0%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B  
-を参考にした。 
+を参考にした。  
