@@ -17,6 +17,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
+      - name: add datetime
+        run: |
+          . init.sh
+          cat index.html
+
       - name: docker login
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u TOnodera --password-stdin
