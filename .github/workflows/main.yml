@@ -29,12 +29,21 @@ jobs:
         env:
           VERSION: ${{ steps.version.outputs.version }}
 
-
-      - name: build
+      - name: Set version
+        id: version
         run: |
-          docker build -t ghcr.io/tonodera/deploy-test:${{ env.VERSION }} .
+          REPOSITORY=$(echo ${{ github.repository }} | sed -e "s#.*/##")
+          VERSION=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
+          echo ::set-output name=version::$VERSION
+          echo ::set-output name=filename::$REPOSITORY-$VERSION
+          echo $VERSION
 
-      - name: docker push
-        run: |
-          docker push ghcr.io/tonodera/deploy-test:${{ env.VERSION }}
+
+#      - name: build
+#        run: |
+#          docker build -t ghcr.io/tonodera/deploy-test:${{ env.VERSION }} .
+#
+#      - name: docker push
+#        run: |
+#          docker push ghcr.io/tonodera/deploy-test:${{ env.VERSION }}
           
