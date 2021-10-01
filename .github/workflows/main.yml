@@ -26,6 +26,7 @@ jobs:
           VERSION=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
           echo ::set-output name=version::$VERSION
           echo ::set-output name=filename::$REPOSITORY-$VERSION
+          echo $REPOSITORY
           echo $VERSION
 
 
