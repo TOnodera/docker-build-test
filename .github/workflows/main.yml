@@ -13,6 +13,7 @@ jobs:
     env:
       IMAGE_NAME: deploy-test
     steps:
+    
       - name: checkout
         uses: actions/checkout@v2
 
@@ -20,20 +21,19 @@ jobs:
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u TOnodera --password-stdin
 
-      
       - name: Set version
         id: version
         run: |
           VERSION=$(echo ${{ github.ref }} | sed 's/refs\/tags\///g')
           echo ::set-output name=version::$VERSION
-          echo $VERSION
+        env:
+          VERSION: ${{ steps.version.outputs.VERSION }}
 
+      - name: build
+        run: |
+          docker build -t ghcr.io/tonodera/deploy-test:${{ env.VERSION }} .
 
-#      - name: build
-#        run: |
-#          docker build -t ghcr.io/tonodera/deploy-test:${{ env.VERSION }} .
-#
-#      - name: docker push
-#        run: |
-#          docker push ghcr.io/tonodera/deploy-test:${{ env.VERSION }}
+      - name: docker push
+        run: |
+          docker push ghcr.io/tonodera/deploy-test:${{ env.VERSION }}
           
